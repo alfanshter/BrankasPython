@@ -4,6 +4,7 @@ use App\Http\Controllers\FacePrintController;
 use App\Http\Controllers\FingerprintController;
 use App\Http\Controllers\PenggunaControler;
 use App\Http\Controllers\SecurityController;
+use App\Http\Controllers\SelenoidController;
 use App\Http\Controllers\StatusAlatController;
 use App\Http\Controllers\VoiceController;
 use Illuminate\Http\Request;
@@ -41,3 +42,6 @@ Route::get('/read_face', [FacePrintController::class, 'read_face']);
 
 Route::post('/security', [SecurityController::class, 'security']);
 Route::get('/read_security', [SecurityController::class, 'read_security']);
+
+Route::post('/selenoid', [SelenoidController::class, 'store']);
+Route::get('/selenoid', [SelenoidController::class, 'index']);
