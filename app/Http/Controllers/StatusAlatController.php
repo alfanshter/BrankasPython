@@ -31,11 +31,14 @@ class StatusAlatController extends Controller
     function index()
     {
         $data = DB::table('status_alats')->first();
+        $selenoid = DB::table('selenoids')->first();
+
         if ($data != null) {
             $response = [
                 'message' => 'Success',
                 'data' => $data,
-                'status' =>1
+                'status' =>1,
+                'selenoid' =>  $selenoid->status
             ];
 
             return response()->json($response, Response::HTTP_OK);
@@ -43,7 +46,8 @@ class StatusAlatController extends Controller
             $response = [
                 'message' => 'Safely operate the device using your Android device first',
                 'data' => $data,
-                'status' =>1
+                'status' =>1,
+                'selenoid' =>  $selenoid->status
             ];
 
             return response()->json($response, Response::HTTP_OK);
