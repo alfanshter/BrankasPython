@@ -6,6 +6,7 @@ use App\Models\Pengguna;
 use App\Models\Security;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Intervention\Image\ImageManagerStatic as Image;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -76,6 +77,10 @@ class SecurityController extends Controller
  
         try {
             $post = Security::create($data);
+               //ubah status alat ke stanby
+            $updatealat = DB::table('status_alats')->update([
+                'status' => 'stanby'
+            ]);
 
             $response = [
                 'message' => 'sukses',
